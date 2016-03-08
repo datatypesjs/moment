@@ -1,9 +1,10 @@
 {
-  "name": "hour",
-  "version": "0.1.1",
-  "description": "Full ISO 8601 compatible parser.",
+  "name": "@datatypes/moment",
+  "version": "0.1.0",
+  "description": "ISO 8601 based time and date module",
   "main": "build/index.js",
   "directories": {
+    "lib": "source",
     "test": "test"
   },
   "scripts": {
@@ -26,12 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adius/hour.git"
+    "url": "git+https://github.com/datatypesjs/moment.git"
   },
   "bugs": {
-    "url": "https://github.com/adius/hour/issues"
+    "url": "https://github.com/datatypesjs/moment/issues"
   },
-  "homepage": "https://github.com/adius/hour#readme",
+  "homepage": "https://github.com/datatypesjs/moment#readme",
   "dependencies": {
     "@datatypes/duration": "^0.1.0",
     "zpad": "^0.5.0"

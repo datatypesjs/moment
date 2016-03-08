@@ -1,22 +1,21 @@
-# Hour
+# Moment
 
 ISO 8601 based time and date module.
-Support for dates, times, duration and time intervals in UTC.
 
 
 ## Installation
 
 ```shell
-npm install --save hour
+npm install --save @datatypes/moment
 ```
 
 
 ## Usage
 
 ```js
-const Hour = require('hour')
+import Moment from '@datatypes/moment'
 
-new Hour('2015-11-24T21:32:43Z')
+new Moment('2015-11-24T21:32:43Z')
 ```
 
 Possible formats for the time-string
@@ -54,60 +53,30 @@ Possible formats for the time-string
 	- `<date>T<time>`
 	- `<date> <time>`
 
-1. Duration
-	- `P<datetime>`
-	- Year: `P1Y`
-	- Month: `P1M`
-	- Week: `P1W`
-	- Day: `P1D`
-	- Hour:
-		- `P1H`
-		- `PT1H`
-	- Minute:
-		- `PT1M`
-	- Second:
-		- `P1S`
-		- `PT1S`
-
-1. Time Intervals
-	- `<start-datetime>/<end-datetime>`
-	- `<start-datetime>--<end-datetime>`
-
-	- `<start-datetime>/<duration>`
-	- `<start-datetime>--<duration>`
-
-	- `<duration>/<end-datetime>`
-	- `<duration>--<end-datetime>`
-
-	- `duration` + context information
-
-1. Repeating Intervals
-	- `R<number-of-repetitions>/<time-interval>`
-
 
 ## Methods
 
 ### `toObject`
 
-Returns a plain-object representation of the Hour instance.
+Returns a plain-object representation of the Moment instance.
+The lower limit is always inclusive and the upper limit exclusive.
 
 ```js
-new Hour('2015-11-24T21:37:42.123Z').toObject() === {
-	type: 'moment',
-	string: test.title,
+new Moment('2015-11-24T21:37:42.123Z').toObject() === {
+	string: '2015-11-24T21:37:42.123Z',
 	lowerLimit: new Date('2015-11-24T21:37:42.123Z'),
 	upperLimit: new Date('2015-11-24T21:37:42.124Z'),
 	precision: 'millisecond'
 }
 ```
 
+
 ### `toJSON`
 
 Returns a JSON representation of the Hour instance.
 
 ```js
-new Hour('2015-11-24').toJSON() === '{' +
-	'"type":"moment",' +
+new Moment('2015-11-24').toJSON() === '{' +
 	'"string":"2015-11-24",' +
 	'"precision":"day",' +
 	'"lowerLimit":"2015-11-24T00:00:00.000Z",' +
@@ -115,10 +84,11 @@ new Hour('2015-11-24').toJSON() === '{' +
 '}'
 ```
 
+
 ### `toString`
 
-Returns a JSON representation of the Hour instance.
+Returns the ISO 8601 representation of the Hour instance.
 
 ```js
-new Hour('2015-11-24T21:37:42.123Z').toString() === '2015-11-24T21:37:42.123Z'
+new Moment('2015-11-24T21:37:42.123Z').toString() === '2015-11-24T21:37:42.123Z'
 ```

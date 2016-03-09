@@ -1,92 +1,89 @@
 import runTest from 'ava'
 import expect from 'unexpected'
-import Moment from '../build/index.js'
+
+import Minute from '../build/Minute'
+import Day from '../build/Day'
+import Millisecond from '../build/Millisecond'
 
 
-runTest('set & get years', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setYears(1995)
-	expect(moment.years, 'to equal', 1995)
-	moment.years = 1998
-	expect(moment.years, 'to equal', 1998)
+runTest('set & get year', test => {
+	const moment = new Minute('2015-11-24T18:00')
+	moment.setYear(1995)
+	expect(moment.year, 'to equal', 1995)
+	moment.year = 1998
+	expect(moment.year, 'to equal', 1998)
 })
 
 
-runTest('set & get months', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setMonths(9)
-	expect(moment.months, 'to equal', 9)
-	moment.months = 10
-	expect(moment.months, 'to equal', 10)
+runTest('set & get month', test => {
+	const moment = new Minute('2015-11-24T18:00')
+	moment.setMonth(9)
+	expect(moment.month, 'to equal', 9)
+	moment.month = 10
+	expect(moment.month, 'to equal', 10)
 })
 
 
-runTest('set & get days', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setDays(22)
-	expect(moment.days, 'to equal', 22)
-	moment.days = 23
-	expect(moment.days, 'to equal', 23)
+runTest('set & get day', test => {
+	const moment = new Minute('2015-11-24T18:00')
+	moment.setDay(22)
+	expect(moment.day, 'to equal', 22)
+	moment.day = 23
+	expect(moment.day, 'to equal', 23)
 })
 
 
-runTest('set & get hours', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setHours(12)
-	expect(moment.hours, 'to equal', 12)
-	moment.hours = 17
-	expect(moment.hours, 'to equal', 17)
+runTest('set & get hour', test => {
+	const moment = new Minute('2015-11-24T18:00')
+	moment.setHour(12)
+	expect(moment.hour, 'to equal', 12)
+	moment.hour = 17
+	expect(moment.hour, 'to equal', 17)
 })
 
-runTest('set & get minutes', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setMinutes(45)
-	expect(moment.minutes, 'to equal', 45)
-	moment.minutes = 50
-	expect(moment.minutes, 'to equal', 50)
+runTest('set & get minute', test => {
+	const moment = new Minute('2015-11-24T18:00')
+	moment.setMinute(45)
+	expect(moment.minute, 'to equal', 45)
+	moment.minute = 50
+	expect(moment.minute, 'to equal', 50)
 })
 
-runTest('set & get seconds', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setSeconds(45)
-	expect(moment.seconds, 'to equal', 45)
-	moment.seconds = 50
-	expect(moment.seconds, 'to equal', 50)
+runTest('set & get second', test => {
+	const moment = new Millisecond('2015-11-24T18:00:00.000')
+	moment.setSecond(45)
+	expect(moment.second, 'to equal', 45)
+	moment.second = 50
+	expect(moment.second, 'to equal', 50)
 })
 
-runTest('set & get milliseconds', test => {
-	const moment = new Moment('2015-11-24T18:00')
-	moment.setMilliseconds(700)
-	expect(moment.milliseconds, 'to equal', 700)
-	moment.milliseconds = 800
-	expect(moment.milliseconds, 'to equal', 800)
+runTest('set & get millisecond', test => {
+	const moment = new Millisecond('2015-11-24T18:00:00.000')
+	moment.setMillisecond(700)
+	expect(moment.millisecond, 'to equal', 700)
+	moment.millisecond = 800
+	expect(moment.millisecond, 'to equal', 800)
 })
 
-runTest('clone', test => {
-	const moment = new Moment('2015-11-24T12:00')
+runTest.skip('clone', test => {
+	const moment = new Millisecond('2015-11-24T12:00:00.000')
 	const clone = moment.clone()
-	clone.setHours(18)
+	clone.setHour(18)
 
-	expect(moment.hours, 'to equal', 12)
-	expect(clone.hours, 'to equal', 18)
+	expect(moment.hour, 'to equal', 12)
+	expect(clone.hour, 'to equal', 18)
 })
 
 runTest('toJSON', test => {
-	const moment = new Moment('2015-11-24')
+	const day = new Day('2015-11-24')
 	expect(
-		JSON.stringify(moment),
+		JSON.stringify({day: day}),
 		'to equal',
-		'{' +
-			'"string":"2015-11-24",' +
-			'"precision":"day",' +
-			'"lowerLimit":"2015-11-24T00:00:00.000Z",' +
-			'"upperLimit":"2015-11-25T00:00:00.000Z"' +
-		'}'
+		'{"day":"2015-11-24"}'
 	)
 })
 
-
 runTest('toString', test => {
-	const moment = new Moment('2015-11-24')
-	expect(moment.toString(), 'to equal', '2015-11-24')
+	const day = new Day('2015-11-24')
+	expect('test ' + day, 'to equal', 'test 2015-11-24')
 })

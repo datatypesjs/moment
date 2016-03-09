@@ -1,6 +1,8 @@
 import Duration from '@datatypes/duration'
 
 export default function (precision) {
+	precision = precision.toLowerCase()
+
 	let map = {
 		millennium: new Duration('P1000Y'),
 		century: new Duration('P100Y'),

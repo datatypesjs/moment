@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Moment from '../build/index'
+import Millisecond from '../build/Millisecond'
 
 const unitToIsoString = {
 	// TODO: Implement
@@ -20,7 +20,7 @@ const unitToIsoString = {
 
 for (let unit in unitToIsoString) {
 	runTest('start of ' + unit, test => {
-		const moment = new Moment('2115-11-24T18:37:22.345')
+		const moment = new Millisecond('2115-11-24T18:37:22.345')
 		const functionName = 'startOf' +
 			unit.slice(0,1).toUpperCase() +
 			unit.slice(1)

@@ -1,17 +1,19 @@
 import Duration from '@datatypes/duration'
 
-export default function (date, duration) {
+import Instant from './Instant'
 
+
+export default function (instant, duration) {
 	console.assert(
-		date instanceof Date,
-		date + ' is no instance of Date'
+		instant instanceof Instant,
+		instant + ' is not an instance of class "Instant"'
 	)
 	console.assert(
 		duration instanceof Duration,
-		duration + ' is no instance of Date'
+		duration + ' is not an instance of class "Duration"'
 	)
 
-	let clone = new Date(date)
+	let clone = new Instant(instant.toJSON())
 
 	if (duration.milliseconds)
 		clone.setUTCMilliseconds(

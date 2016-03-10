@@ -1,8 +1,5 @@
 import zpad from 'zpad'
 
-import addDurationToInstant from './addDurationToInstant'
-import precisionToDuration from './precisionToDuration'
-import Instant from './Instant'
 import Moment from './Moment'
 
 
@@ -40,16 +37,5 @@ export default class Year extends Moment {
 			this._isoString = this.yearString
 		}
 		return this._isoString
-	}
-
-	get lowerLimit () {
-		return new Instant(this.string)
-	}
-
-	get upperLimit () {
-		return addDurationToInstant(
-			this.lowerLimit,
-			precisionToDuration(this.constructor.name)
-		)
 	}
 }

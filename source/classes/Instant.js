@@ -1,4 +1,5 @@
 import 'babel-polyfill'
+import moment from '../index'
 
 export default class Instant extends Date {
 	constructor () {
@@ -12,5 +13,9 @@ export default class Instant extends Date {
 		}
 
 		super(...arguments)
+	}
+
+	toMoment () {
+		return moment(this.toISOString())
 	}
 }

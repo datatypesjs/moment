@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Instant from '../build/Instant'
+import Instant from '../source/classes/Instant'
 
 
 runTest.skip('2', test => {

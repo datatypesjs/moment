@@ -1,7 +1,7 @@
 import zpad from 'zpad'
 
-import addDurationToInstant from './addDurationToInstant'
-import precisionToDuration from './precisionToDuration'
+import addDurationToInstant from '../addDurationToInstant'
+import precisionToDuration from '../precisionToDuration'
 import Year from './Year.js'
 
 

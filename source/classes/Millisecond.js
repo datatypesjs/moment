@@ -48,8 +48,4 @@ export default class Millisecond extends Second {
 	toString () {
 		return this.string
 	}
-
-	clone () {
-		return new Millisecond(this.string)
-	}
 }

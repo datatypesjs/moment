@@ -1,10 +1,11 @@
-import addDurationToInstant from './addDurationToInstant'
-import splitString from './splitString'
-import precisionToDuration from './precisionToDuration'
-import * as startOf from './startOf'
+import Instant from './Instant'
+import * as startOf from '../startOf'
+import addDurationToInstant from '../addDurationToInstant'
+import precisionToDuration from '../precisionToDuration'
 
 
 export default class Moment {
+
 	clone () {
 		return new Moment(this.isoString)
 	}
@@ -25,6 +26,10 @@ export default class Moment {
 	startOfHour ()		{ startOf.hour(this); return this }
 	startOfMinute ()	{ startOf.minute(this); return this }
 	startOfSecond ()	{ startOf.second(this); return this }
+
+	// TODO: Re-add when native es2015 support arrives
+	// add (duration) {}
+	// subtract (duration) {}
 
 
 	get isoString () {
@@ -52,5 +57,16 @@ export default class Moment {
 
 	toObject () {
 		return this.object
+	}
+
+	get lowerLimit () {
+		return new Instant(this.string)
+	}
+
+	get upperLimit () {
+		return addDurationToInstant(
+			this.lowerLimit,
+			precisionToDuration(this.constructor.name)
+		)
 	}
 }

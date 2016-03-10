@@ -1,10 +1,10 @@
-import Year from './Year'
-import Month from './Month'
-import Day from './Day'
-import Hour from './Hour'
-import Minute from './Minute'
-import Second from './Second'
-import Millisecond from './Millisecond'
+import Year from './classes/Year'
+import Month from './classes/Month'
+import Day from './classes/Day'
+import Hour from './classes/Hour'
+import Minute from './classes/Minute'
+import Second from './classes/Second'
+import Millisecond from './classes/Millisecond'
 
 
 export default (isoString) => {

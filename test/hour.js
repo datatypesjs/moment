@@ -1,9 +1,9 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import moment from '../build/index'
-import Instant from '../build/Instant'
-import Hour from '../build/Hour'
+import moment from '../source/index'
+import Instant from '../source/classes/Instant'
+import Hour from '../source/classes/Hour'
 
 
 runTest('2015-11-24T21', test => {

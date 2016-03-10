@@ -13,9 +13,6 @@ export default class Second extends Minute {
 
 		console.assert(0 <= second && second < 60)
 		this._second = second
-		if (!Number.isInteger(second)) {
-			this._precision = 'millisecond'
-		}
 	}
 
 

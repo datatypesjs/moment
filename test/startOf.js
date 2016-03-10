@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Millisecond from '../build/Millisecond'
+import Millisecond from '../source/classes/Millisecond'
 
 const unitToIsoString = {
 	// TODO: Implement

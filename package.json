@@ -2,7 +2,7 @@
   "name": "@datatypes/moment",
   "version": "0.1.0",
   "description": "ISO 8601 based time and date module",
-  "main": "build/Moment.js",
+  "main": "build/index",
   "directories": {
     "lib": "source",
     "test": "test"

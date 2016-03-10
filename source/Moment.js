@@ -5,28 +5,6 @@ import * as startOf from './startOf'
 
 
 export default class Moment {
-	constructor () {
-		// if (!isoString) {
-		// 	let startInstant = new Instant()
-		// 	this._dateTime = new DateTime(startInstant.toISOString())
-		// }
-		// else {
-		// 	this._isoString = isoString.replace(' ', 'T')
-		//
-		// 	if (/[^\d-T:.]/i.test(this._isoString)) {
-		// 		throw new Error('ISO string "' + this._isoString +
-		// 			'" contains illegal characters')
-		// 	}
-		//
-		// 	if (isoString.includes('T')) {
-		// 		return new DateTime(isoString)
-		// 	}
-		// 	else {
-		// 		return new Date(isoString)
-		// 	}
-		// }
-	}
-
 	clone () {
 		return new Moment(this.isoString)
 	}

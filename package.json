@@ -38,7 +38,7 @@
   },
   "homepage": "https://github.com/datatypesjs/moment#readme",
   "dependencies": {
-    "@datatypes/duration": "^0.2.0",
+    "@datatypes/duration": "^0.4.0",
     "zpad": "^0.5.0"
   }
 }

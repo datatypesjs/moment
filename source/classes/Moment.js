@@ -1,4 +1,5 @@
 import Instant from './Instant'
+import Duration from '@datatypes/duration'
 import * as startOf from '../startOf'
 import addDurationToInstant from '../addDurationToInstant'
 import precisionToDuration from '../precisionToDuration'
@@ -30,6 +31,22 @@ export default class Moment {
 	// TODO: Re-add when native es2015 support arrives
 	// add (duration) {}
 	// subtract (duration) {}
+
+	maximumOffset (moment) {
+		let milliseconds
+
+		// If offset moment is after current moment
+		if (moment.lowerLimit > this.lowerLimit) {
+			milliseconds = moment.upperLimit - this.lowerLimit
+		}
+		else {
+			milliseconds = this.upperLimit - moment.lowerLimit
+		}
+
+		return new Duration()
+			.setMilliseconds(milliseconds)
+			.normalize()
+	}
 
 
 	get isoString () {

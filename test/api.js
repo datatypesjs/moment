@@ -1,15 +1,8 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import momentFromString from '../source/index'
-import Moment from '../source/classes/Moment'
-import Year from '../source/classes/Year'
-import Month from '../source/classes/Month'
-import Day from '../source/classes/Day'
-import Hour from '../source/classes/Hour'
-import Minute from '../source/classes/Minute'
-import Second from '../source/classes/Second'
-import Millisecond from '../source/classes/Millisecond'
+import momentFromString, {Moment, Year, Month, Day,
+	Hour, Minute, Second, Millisecond} from '../source/index'
 
 
 runTest('instantiate moment', test => {

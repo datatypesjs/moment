@@ -9,12 +9,16 @@ export default class Minute extends Hour {
 		console.assert(/:[0-9]{2}Z?$/i.test(isoString))
 
 		const fragments = isoString.split(':')
-		const minute = Number(fragments.pop().replace('Z'))
+		const minute = Number(fragments.pop().replace('Z', ''))
 
 		super(fragments.join(':'))
 
 		console.assert(0 <= minute && minute < 60)
 		this._minute = minute
+	}
+
+	clone () {
+		return new Minute(this.string)
 	}
 
 

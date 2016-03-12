@@ -17,6 +17,10 @@ export default class Second extends Minute {
 		this._second = second
 	}
 
+	clone () {
+		return new Second(this.string)
+	}
+
 
 	set second (second) {
 		this._second = second

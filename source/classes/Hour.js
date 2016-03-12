@@ -17,6 +17,10 @@ export default class Hour extends Day {
 		this._hour = hour
 	}
 
+	clone () {
+		return new Hour(this.string)
+	}
+
 
 	set hour (hour) {
 		this._hour = hour

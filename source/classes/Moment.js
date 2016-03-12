@@ -7,10 +7,6 @@ import precisionToDuration from '../precisionToDuration'
 
 export default class Moment {
 
-	clone () {
-		return new Moment(this.isoString)
-	}
-
 	get precision () { return this._precision }
 	set precision (precision) { this._precision = precision }
 

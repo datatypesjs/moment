@@ -17,6 +17,10 @@ export default class Day extends Month {
 		this._day = day
 	}
 
+	clone () {
+		return new Day(this.string)
+	}
+
 
 	set day (day) {
 		this._day = day

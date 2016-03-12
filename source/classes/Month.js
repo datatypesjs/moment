@@ -19,6 +19,9 @@ export default class Month extends Year {
 		this._month = month
 	}
 
+	clone () {
+		return new Month(this.string)
+	}
 
 	set month (month) {
 		this._month = month

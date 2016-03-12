@@ -11,6 +11,10 @@ export default class Year extends Moment {
 		this._year = year
 	}
 
+	clone () {
+		return new Year(this.string)
+	}
+
 
 	set year (year) {
 		this._year = year

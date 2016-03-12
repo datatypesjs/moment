@@ -6,6 +6,8 @@ import Month from './Month'
 export default class Day extends Month {
 
 	constructor (isoString) {
+		console.assert(/-(0[1-9]|[12][0-9]|3[01])$/.test(isoString))
+
 		const fragments = isoString.split('-')
 		const day = Number(fragments.pop())
 

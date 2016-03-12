@@ -8,11 +8,12 @@ import Year from './Year.js'
 export default class Month extends Year {
 
 	constructor (isoString) {
+		console.assert(/-(0[1-9]|1[0-2])$/.test(isoString))
+
 		const fragments = isoString.split('-')
-		const year = Number(fragments[0])
 		const month = Number(fragments[1])
 
-		super(year)
+		super(fragments[0])
 
 		console.assert(1 <= month && month <= 12)
 		this._month = month

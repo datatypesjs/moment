@@ -6,8 +6,10 @@ import Day from './Day'
 export default class Hour extends Day {
 
 	constructor (isoString) {
+		console.assert(/T[0-9]{2}Z?$/i.test(isoString))
+
 		const fragments = isoString.split('T')
-		const hour = Number(fragments.pop())
+		const hour = Number(fragments.pop().replace('Z', ''))
 
 		super(fragments[0])
 

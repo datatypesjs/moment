@@ -6,8 +6,10 @@ import Second from './Second'
 export default class Millisecond extends Second {
 
 	constructor (isoString) {
+		console.assert(/\.[0-9]{1,3}Z?$/i.test(isoString))
+
 		const fragments = isoString.split('.')
-		const millisecond = Number(fragments.pop())
+		const millisecond = Number(fragments.pop().replace('Z', ''))
 
 		super(fragments.join('.'))
 
@@ -16,6 +18,10 @@ export default class Millisecond extends Second {
 			'Millisecond must be in range [0,1000[ and not ' + millisecond
 		)
 		this._millisecond = millisecond
+	}
+
+	clone () {
+		return new Millisecond(this.string)
 	}
 
 	set millisecond (millisecond) {

@@ -6,8 +6,10 @@ import Minute from './Minute'
 export default class Second extends Minute {
 
 	constructor (isoString) {
+		console.assert(/:[0-9]{2}Z?$/i.test(isoString))
+
 		const fragments = isoString.split(':')
-		const second = Number(fragments.pop())
+		const second = Number(fragments.pop().replace('Z', ''))
 
 		super(fragments.join(':'))
 

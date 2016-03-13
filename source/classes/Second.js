@@ -6,14 +6,25 @@ import Minute from './Minute'
 export default class Second extends Minute {
 
 	constructor (isoString) {
-		console.assert(/:[0-9]{2}Z?$/i.test(isoString))
+		const pattern = /:?([0-9]{2})(?:\.([0-9]+))?Z?$/i
+		const matches = isoString.match(pattern)
 
-		const fragments = isoString.split(':')
-		const second = Number(fragments.pop().replace('Z', ''))
+		if (!matches) {
+			throw new Error(
+				'The provided argument must be valid ISO string for a second ' +
+				'and not ' + isoString
+			)
+		}
 
-		super(fragments.join(':'))
+		const second = matches[1]
+		const secondFraction = matches[2]
 
-		console.assert(0 <= second && second < 60)
+		super(isoString.replace(pattern, ''))
+
+		console.assert(
+			0 <= second && second < 60,
+			'Second must be in range [0,60[ and not ' + second
+		)
 		this._second = second
 	}
 

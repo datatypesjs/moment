@@ -18,6 +18,18 @@ runTest('2015-11-24T21:15', test => {
 	expect(moment(test.title).object, 'to equal', minuteObject)
 })
 
+runTest('2015-11-24T2115', test => {
+	const minute = new Minute(test.title)
+	const minuteObject = {
+		string: '2015-11-24T21:15Z',
+		lowerLimit: new Instant('2015-11-24T21:15'),
+		upperLimit: new Instant('2015-11-24T21:16'),
+	}
+
+	expect(minute.object, 'to equal', minuteObject)
+	expect(moment(test.title).object, 'to equal', minuteObject)
+})
+
 runTest.skip('2015-11-24T21.25', test => {
 	expect(
 		new Minute(test.title).object,

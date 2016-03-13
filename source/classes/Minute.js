@@ -6,14 +6,21 @@ import Hour from './Hour'
 export default class Minute extends Hour {
 
 	constructor (isoString) {
-		console.assert(/:[0-9]{2}Z?$/i.test(isoString))
+		const pattern = /:?([0-5][0-9])(?:\.([0-9]+))?Z?$/i
+		const matches = isoString.match(pattern)
 
-		const fragments = isoString.split(':')
-		const minute = Number(fragments.pop().replace('Z', ''))
+		if (!matches) {
+			throw new Error(
+				'The provided argument must be valid minute string ' +
+				'and not ' + isoString
+			)
+		}
 
-		super(fragments.join(':'))
+		const minute = matches[1]
+		const minuteFraction = matches[2]
 
-		console.assert(0 <= minute && minute < 60)
+		super(isoString.replace(pattern, ''))
+
 		this._minute = minute
 	}
 

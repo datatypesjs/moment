@@ -6,14 +6,21 @@ import Day from './Day'
 export default class Hour extends Day {
 
 	constructor (isoString) {
-		console.assert(/T[0-9]{2}Z?$/i.test(isoString))
+		const pattern = /T([01][0-9]|2[0-4])(?:\.([0-9]+))?Z?$/i
+		const matches = isoString.match(pattern)
 
-		const fragments = isoString.split('T')
-		const hour = Number(fragments.pop().replace('Z', ''))
+		if (!matches) {
+			throw new Error(
+				'The provided argument must be valid ISO string for an hour ' +
+				'and not ' + isoString
+			)
+		}
 
-		super(fragments[0])
+		const hour = matches[1]
+		const hourFraction = matches[2]
 
-		console.assert(0 <= hour && hour <= 24)
+		super(isoString.replace(pattern, ''))
+
 		this._hour = hour
 	}
 

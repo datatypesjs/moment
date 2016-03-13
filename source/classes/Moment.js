@@ -44,6 +44,19 @@ export default class Moment {
 			.normalize()
 	}
 
+	isBefore (moment) {
+		return this.lowerLimit < moment.lowerLimit
+	}
+
+	isAfter (moment) {
+		return moment.lowerLimit < this.lowerLimit
+	}
+
+	isSimultaneous (moment) {
+		return (+moment.lowerLimit === +this.lowerLimit) &&
+			(+moment.upperLimit === +this.upperLimit)
+	}
+
 
 	get isoString () {
 		if (!this._isoString) {

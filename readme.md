@@ -12,11 +12,28 @@ npm install --save @datatypes/moment
 
 ## Usage
 
-```js
-import Moment from '@datatypes/moment'
+There are classes for every level of precision.
+These classes are all subclasses of the `Moment` base class.
 
-new Moment('2015-11-24T21:32:43Z')
+```js
+import momentFromString, {Moment, Instant, Year, Month, Day,
+	Hour, Minute, Second, Millisecond} from '@datatypes/moment'
+
+const year = new Year('2015')
+const month = new Month('2015-11')
+const day = new Day('2015-11-24')
+const hour = new Hour('2015-11-24T21')
+const minute = new Minute('2015-11-24T21:32')
+// …
+
+// If the precision is not known before instantiation or may vary
+const moment = momentFromString('2015-11-24T21:32:45')
+
+// Returns `new Second('2015-11-24T21:32:45')`
 ```
+
+The `Instant` class is a simple wrapper for the native `Date` class
+in order to be consistent with the ISO 8601 naming schema.
 
 Possible formats for the time-string
 (when a string can be interpreted as a date or a time, date takes precedence)
@@ -54,41 +71,91 @@ Possible formats for the time-string
 	- `<date> <time>`
 
 
+## Properties
+
+Implemented with setters & getters.
+Therefore some properties are static and some are dynamically created.
+
+```js
+const minute = new Minute('2015-11-24T21:37')
+
+console.log(minute.day, minute.month, minute.day, minute.hour, minute.minute)
+// 2015 11 24 21 37
+
+console.log(minute.string)
+// 2015-11-24T21:37Z
+
+console.log(minute.object)
+// { string: '2015-11-24T21:37Z',
+//   lowerLimit: new Instant('2015-11-24T21:37:00.000Z'),
+//   upperLimit: new Instant('2015-11-24T21:38:00.000Z') }
+
+console.log(minute.lowerLimit.toISOString())
+// 2015-11-24T21:37:00.000Z
+
+console.log(minute.upperLimit.toISOString())
+// 2015-11-24T21:38:00.000Z
+
+console.log(minute.intervalString)
+// Returns an interval string with start and end properties
+// from a moment with upperLimit and lowerLimit properties.
+//
+// 2015-11-24T21:37:00.000Z--2015-11-24T21:38:00.000Z
+```
+
+Setters for properties are available as native setters and as methods:
+
+```js
+const minute = new Minute('2015-11-24T21:37')
+
+minute.minute = 42
+minute.setMinute(32)
+```
+
+This allows for easy chaining:
+
+```js
+const moment = new Moment()
+	.setYear(2015)
+	.setMonth(11)
+	.setDay(24)
+	.setHour(21)
+	.setMinute(37)
+```
+
+
 ## Methods
 
-### `toObject`
+### `toString()` or `toJSON()` (alias for `.string`)
+
+```js
+new Day('2015-11-24').toString() === '2015-11-24'
+```
+
+
+### `toObject()` (alias for `.object`)
 
 Returns a plain-object representation of the Moment instance.
 The lower limit is always inclusive and the upper limit exclusive.
 
 ```js
-new Moment('2015-11-24T21:37:42.123Z').toObject() === {
+new Millisecond('2015-11-24T21:37:42.123Z').toObject() === {
 	string: '2015-11-24T21:37:42.123Z',
-	lowerLimit: new Date('2015-11-24T21:37:42.123Z'),
-	upperLimit: new Date('2015-11-24T21:37:42.124Z'),
+	lowerLimit: new Instant('2015-11-24T21:37:42.123Z'),
+	upperLimit: new Instant('2015-11-24T21:37:42.124Z'),
 	precision: 'millisecond'
 }
 ```
 
 
-### `toJSON`
+### `startOfYear()`, `startOfMonth()`, `startOfDay()`, …
 
-Returns a JSON representation of the Hour instance.
+### `maximumOffset(anotherMoment)`
 
-```js
-new Moment('2015-11-24').toJSON() === '{' +
-	'"string":"2015-11-24",' +
-	'"precision":"day",' +
-	'"lowerLimit":"2015-11-24T00:00:00.000Z",' +
-	'"upperLimit":"2015-11-25T00:00:00.000Z"' +
-'}'
-```
+### `isBefore(anotherMoment)`
 
+### `isAfter(anotherMoment)`
 
-### `toString`
+### `isSimultaneous(anotherMoment)`
 
-Returns the ISO 8601 representation of the Hour instance.
-
-```js
-new Moment('2015-11-24T21:37:42.123Z').toString() === '2015-11-24T21:37:42.123Z'
-```
+### `clone()`

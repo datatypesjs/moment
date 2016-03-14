@@ -101,6 +101,9 @@ console.log(minute.intervalString)
 // from a moment with upperLimit and lowerLimit properties.
 //
 // 2015-11-24T21:37:00.000Z--2015-11-24T21:38:00.000Z
+
+console.log(minute.duration)
+//  new Duration('PT1M0.0S')
 ```
 
 Setters for properties are available as native setters and as methods:

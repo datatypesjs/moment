@@ -71,6 +71,12 @@ export default class Moment {
 			this.upperLimit.toISOString()
 	}
 
+	get duration () {
+		return new Duration()
+			.setMilliseconds(this.upperLimit - this.lowerLimit)
+			.normalize()
+	}
+
 	get object () {
 		return {
 			string: this.string,

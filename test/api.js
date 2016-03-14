@@ -1,5 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
+import Duration from '@datatypes/duration'
+
 
 import momentFromString, {Moment, Year, Month, Day,
 	Hour, Minute, Second, Millisecond} from '../source/index'
@@ -51,4 +53,9 @@ runTest('interval string', test => {
 		'to equal',
 		'2015-11-24T17:34:00.000Z--2015-11-24T17:35:00.000Z'
 	)
+})
+
+runTest('duration', test => {
+	const day = new Day('2015-11-24')
+	expect(day.duration, 'to equal', new Duration('P24H0M0.0S'))
 })

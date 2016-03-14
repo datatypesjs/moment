@@ -36,3 +36,19 @@ runTest('toString', test => {
 	const day = new Day('2015-11-24')
 	expect('test ' + day, 'to equal', 'test 2015-11-24')
 })
+
+runTest('interval string', test => {
+	const day = new Day('2015-11-24')
+	expect(
+		day.intervalString,
+		'to equal',
+		'2015-11-24T00:00:00.000Z--2015-11-25T00:00:00.000Z'
+	)
+
+	const minute = new Minute('2015-11-24T17:34')
+	expect(
+		minute.intervalString,
+		'to equal',
+		'2015-11-24T17:34:00.000Z--2015-11-24T17:35:00.000Z'
+	)
+})

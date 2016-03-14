@@ -54,20 +54,21 @@ export default class Moment {
 			(+moment.upperLimit === +this.upperLimit)
 	}
 
-
-	get isoString () {
+	get string () {
 		if (!this._isoString) {
 			this._isoString = this.string
 		}
 
 		return this._isoString
 	}
+	get isoString () { return this.string }
+	toString () { return this.string }
+	toJSON () { return this.string }
 
-	toString () {
-		return this.isoString
-	}
-	toJSON () {
-		return this.isoString
+	get intervalString () {
+		return this.lowerLimit.toISOString() +
+			'--' +
+			this.upperLimit.toISOString()
 	}
 
 	get object () {

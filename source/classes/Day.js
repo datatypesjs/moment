@@ -13,7 +13,10 @@ export default class Day extends Month {
 
 		super(fragments.join('-'))
 
-		console.assert(1 <= day && day <= 31)
+		console.assert(
+			1 <= day && day <= 31,
+			'Day must be in range [1,31] and not ' + day
+		)
 		this._day = day
 	}
 

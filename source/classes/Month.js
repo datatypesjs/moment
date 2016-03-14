@@ -15,7 +15,10 @@ export default class Month extends Year {
 
 		super(fragments[0])
 
-		console.assert(1 <= month && month <= 12)
+		console.assert(
+			1 <= month && month <= 12,
+			'Month must be in range [1,12] and not ' + month
+		)
 		this._month = month
 	}
 

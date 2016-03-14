@@ -7,7 +7,10 @@ export default class Year extends Moment {
 	constructor (year) {
 		super()
 		year = Number(year)
-		console.assert(0 <= year && year <= 9999)
+		console.assert(
+			0 <= year && year <= 9999,
+			'Year must be in range [0,9999] and not ' + year
+		)
 		this._year = year
 	}
 

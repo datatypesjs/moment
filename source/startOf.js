@@ -25,4 +25,5 @@ export function minute (object) {
 
 export function second (object) {
 	object.millisecond = 0
+	delete object._isoString
 }

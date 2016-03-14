@@ -30,8 +30,8 @@ export default class Minute extends Hour {
 
 
 	set minute (minute) {
+		delete this._isoString
 		this._minute = minute
-		this._isoString = null
 		return this
 	}
 	setMinute (minute) {

@@ -20,9 +20,8 @@ export default class Year extends Moment {
 
 
 	set year (year) {
+		delete this._isoString
 		this._year = year
-		this._yearString = null
-		this._isoString = null
 		return this
 	}
 	setYear (year) {

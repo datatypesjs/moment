@@ -27,8 +27,8 @@ export default class Month extends Year {
 	}
 
 	set month (month) {
+		delete this._isoString
 		this._month = month
-		this._isoString = null
 		return this
 	}
 	setMonth (month) {

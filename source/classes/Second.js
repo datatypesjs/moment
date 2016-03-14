@@ -34,8 +34,8 @@ export default class Second extends Minute {
 
 
 	set second (second) {
+		delete this._isoString
 		this._second = second
-		this._isoString = null
 		return this
 	}
 	setSecond (second) {

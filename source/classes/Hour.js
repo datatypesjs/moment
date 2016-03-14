@@ -30,8 +30,8 @@ export default class Hour extends Day {
 
 
 	set hour (hour) {
+		delete this._isoString
 		this._hour = hour
-		this._isoString = null
 		return this
 	}
 	setHour (hour) {

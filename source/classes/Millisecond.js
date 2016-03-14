@@ -30,8 +30,8 @@ export default class Millisecond extends Second {
 	}
 
 	set millisecond (millisecond) {
+		delete this._isoString
 		this._millisecond = millisecond
-		this._isoString = null
 		return this
 	}
 	setMillisecond (millisecond) {

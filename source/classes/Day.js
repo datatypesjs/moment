@@ -26,8 +26,8 @@ export default class Day extends Month {
 
 
 	set day (day) {
+		delete this._isoString
 		this._day = day
-		this._isoString = null
 		return this
 	}
 	setDay (day) {

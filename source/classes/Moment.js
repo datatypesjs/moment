@@ -7,13 +7,6 @@ import precisionToDuration from '../precisionToDuration'
 
 export default class Moment {
 
-	get lowerLimit () { return this._lowerLimit }
-	set lowerLimit (lowerLimit) { this._lowerLimit = lowerLimit }
-
-	get upperLimit () { return this._lowerLimit }
-	set upperLimit (upperLimit) { this._upperLimit = upperLimit }
-
-
 	startOfYear ()		{ startOf.year(this); return this }
 	startOfMonth ()		{ startOf.month(this); return this }
 	startOfDay ()		{ startOf.day(this); return this }

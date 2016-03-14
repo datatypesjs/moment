@@ -6,7 +6,7 @@ import Hour from './Hour'
 export default class Minute extends Hour {
 
 	constructor (isoString) {
-		const pattern = /:?([0-5][0-9])(?:\.([0-9]+))?Z?$/i
+		const pattern = /:?([0-5][0-9])(\.[0-9]+)?Z?$/i
 		const matches = isoString.match(pattern)
 
 		if (!matches) {
@@ -16,8 +16,8 @@ export default class Minute extends Hour {
 			)
 		}
 
-		const minute = matches[1]
-		const minuteFraction = matches[2]
+		const minute = Number(matches[1])
+		const minuteFraction = Number('0' + matches[2])
 
 		super(isoString.replace(pattern, ''))
 

@@ -6,7 +6,7 @@ import Day from './Day'
 export default class Hour extends Day {
 
 	constructor (isoString) {
-		const pattern = /T([01][0-9]|2[0-4])(?:\.([0-9]+))?Z?$/i
+		const pattern = /T([01][0-9]|2[0-4])(\.[0-9]+)?Z?$/i
 		const matches = isoString.match(pattern)
 
 		if (!matches) {
@@ -16,8 +16,8 @@ export default class Hour extends Day {
 			)
 		}
 
-		const hour = matches[1]
-		const hourFraction = matches[2]
+		const hour = Number(matches[1])
+		const hourFraction = Number('0' + matches[2])
 
 		super(isoString.replace(pattern, ''))
 

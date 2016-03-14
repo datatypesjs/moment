@@ -6,7 +6,7 @@ import Minute from './Minute'
 export default class Second extends Minute {
 
 	constructor (isoString) {
-		const pattern = /:?([0-9]{2})(?:\.([0-9]+))?Z?$/i
+		const pattern = /:?([0-9]{2})(\.[0-9]+)?Z?$/i
 		const matches = isoString.match(pattern)
 
 		if (!matches) {
@@ -16,8 +16,8 @@ export default class Second extends Minute {
 			)
 		}
 
-		const second = matches[1]
-		const secondFraction = matches[2]
+		const second = Number(matches[1])
+		const secondFraction = Number('0' + matches[2])
 
 		super(isoString.replace(pattern, ''))
 

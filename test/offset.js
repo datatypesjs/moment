@@ -32,6 +32,22 @@ runTest('check if moment is after another moment', test => {
 })
 
 
+runTest('check if moment starts simultaneous with another moment', test => {
+	const moment1 = momentFromString('2015-11-01')
+	const moment2 = momentFromString('2015-11')
+
+	expect(moment1.startsSimultaneous(moment2), 'to be true')
+})
+
+
+runTest('check if moment ends simultaneous with another moment', test => {
+	const moment1 = momentFromString('2015-11-30')
+	const moment2 = momentFromString('2015-11')
+
+	expect(moment1.endsSimultaneous(moment2), 'to be true')
+})
+
+
 runTest('check if moment is simultaneous to another moment', test => {
 	const moment1 = momentFromString('2015-11-25')
 	const moment2 = momentFromString('2015-11-25')

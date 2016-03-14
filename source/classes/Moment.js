@@ -42,9 +42,17 @@ export default class Moment {
 		return moment.lowerLimit < this.lowerLimit
 	}
 
+	startsSimultaneous (moment) {
+		return +moment.lowerLimit === +this.lowerLimit
+	}
+
+	endsSimultaneous (moment) {
+		return +moment.upperLimit === +this.upperLimit
+	}
+
 	isSimultaneous (moment) {
-		return (+moment.lowerLimit === +this.lowerLimit) &&
-			(+moment.upperLimit === +this.upperLimit)
+		return this.startsSimultaneous(moment) &&
+			this.endsSimultaneous(moment)
 	}
 
 	get string () {

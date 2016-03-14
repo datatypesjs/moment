@@ -7,9 +7,6 @@ import precisionToDuration from '../precisionToDuration'
 
 export default class Moment {
 
-	get precision () { return this._precision }
-	set precision (precision) { this._precision = precision }
-
 	get lowerLimit () { return this._lowerLimit }
 	set lowerLimit (lowerLimit) { this._lowerLimit = lowerLimit }
 

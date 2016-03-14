@@ -4,6 +4,8 @@ export {default as add} from './add'
 export {default as subtract} from './subtract'
 
 export {default as Moment} from './classes/Moment'
+export {default as Instant} from './classes/Instant'
+
 export {default as Year} from './classes/Year'
 export {default as Month} from './classes/Month'
 export {default as Day} from './classes/Day'

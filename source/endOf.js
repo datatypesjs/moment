@@ -1,4 +1,5 @@
 import monthDays from 'month-days'
+import endOfWeek from 'end-of-week'
 
 export function year (object) {
 	object.month = 12
@@ -11,11 +12,7 @@ export function month (object) {
 }
 
 export function week (object) {
-	const lowerLimit = new Date(object.lowerLimit)
-	const firstDayOfWeek = lowerLimit.getUTCDate() - lowerLimit.getUTCDay()
-	const date = new Date(
-		lowerLimit.setUTCDate(firstDayOfWeek.getUTCDate() + 7)
-	)
+	const date = endOfWeek(object.lowerLimit)
 	object.month = date.getUTCMonth() + 1
 	object.day = date.getUTCDate()
 	day(object)

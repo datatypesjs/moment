@@ -164,7 +164,39 @@ new Millisecond('2015-11-24T21:37:42.123Z').toObject() === {
 ```
 
 
-### `startOfYear()`, `startOfMonth()`, `startOfDay()`, …
+### `startOf<unit>()`
+
+Mutates a moment by setting it to the start of a unit of time.
+
+```js
+const moment = new Millisecond('2115-11-24T18:37:22.345')
+
+moment.startOfYear()	// 2115-01-01T00:00:00.000Z
+moment.startOfMonth()	// 2115-11-01T00:00:00.000Z
+moment.startOfWeek()	// 2115-11-18T00:00:00.000Z
+moment.startOfDay()		// 2115-11-24T00:00:00.000Z
+moment.startOfHour()	// 2115-11-24T18:00:00.000Z
+moment.startOfMinute()	// 2115-11-24T18:37:00.000Z
+moment.startOfSecond()	// 2115-11-24T18:37:22.000Z
+```
+
+
+### `endOf<unit>()`
+
+Mutates a moment by setting it to the end of a unit of time.
+
+```js
+const moment = new Millisecond('2115-11-24T18:37:22.345')
+
+moment.endOfYear()		// 2115-12-31T23:59:59.999Z
+moment.endOfMonth()		// 2115-10-31T23:59:59.999Z
+moment.endOfWeek()		// 2115-11-03T23:59:59.999Z
+moment.endOfDay()		// 2115-10-29T23:59:59.999Z
+moment.endOfHour()		// 2115-10-29T18:59:59.999Z
+moment.endOfMinute()	// 2115-10-29T18:37:59.999Z
+moment.endOfSecond()	// 2115-10-29T18:37:22.999Z
+```
+
 
 ### `maximumOffset(anotherMoment)`
 

@@ -10,6 +10,7 @@ export default class Moment {
 
 	startOfYear ()		{ startOf.year(this); return this }
 	startOfMonth ()		{ startOf.month(this); return this }
+	startOfWeek ()		{ startOf.week(this); return this }
 	startOfDay ()		{ startOf.day(this); return this }
 	startOfHour ()		{ startOf.hour(this); return this }
 	startOfMinute ()	{ startOf.minute(this); return this }

@@ -1,3 +1,11 @@
+function startOfWeek (date) {
+	const clone = new Date(date)
+	clone.setUTCDate(
+		clone.getUTCDate() - ((clone.getUTCDay() + 6) % 7)
+	)
+	return clone
+}
+
 export function year (object) {
 	object.month = 1
 	month(object)
@@ -5,6 +13,14 @@ export function year (object) {
 
 export function month (object) {
 	object.day = 1
+	day(object)
+}
+
+export function week (object) {
+	const date = startOfWeek(object.lowerLimit)
+	object.month = date.getUTCMonth() + 1
+	object.day = date.getUTCDate()
+
 	day(object)
 }
 

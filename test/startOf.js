@@ -2,6 +2,7 @@ import runTest from 'ava'
 import expect from 'unexpected'
 
 import Millisecond from '../source/classes/Millisecond'
+import Day from '../source/classes/Day'
 
 const unitToIsoString = {
 	// TODO: Implement
@@ -31,3 +32,21 @@ for (let unit in unitToIsoString) {
 		}
 	})
 }
+
+
+runTest ('start of week (extended test)', test => {
+	const dateToReference = {
+		'2016-03-03': '2016-02-29', // Previous month
+		'2016-03-06': '2016-02-29', // Sunday to previous month
+		'2016-03-07': '2016-03-07', // Monday
+		'2016-03-10': '2016-03-07', // Regular weekday
+		'2016-03-13': '2016-03-07', // Sunday
+	}
+	for (let date in dateToReference) {
+		expect(
+			new Day(date).startOfWeek().isoString,
+			'to equal',
+			dateToReference[date]
+		)
+	}
+})

@@ -6,7 +6,7 @@ export function year (object) {
 }
 
 export function month (object) {
-	object.day = monthDays(object.month, object.year)
+	object.day = monthDays(object.month - 1, object.year)
 	day(object)
 }
 

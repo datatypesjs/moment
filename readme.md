@@ -32,14 +32,27 @@ const moment = momentFromString('2015-11-24T21:32:45')
 // Returns `new Second('2015-11-24T21:32:45')`
 ```
 
+
+## Notes
+
+In contrast to the ISO 8601 standard
+this module assumes that time is specified in UTC per default.
+This means in order to work with local times
+they must be explicitly entered with their offset (e.g. `17:45:34+0300`)
+or the relevant flags must be set. (Not yet supported!)
+This also means that the `Z` to denote an UTC time is optional.
+
 The `Instant` class is a simple wrapper for the native `Date` class
 in order to be consistent with the ISO 8601 naming schema.
+It defines an infinitely accurate moment in time.
 
-Possible formats for the time-string
+In accordance with the ISO standard the first day of a week is monday.
+
+Possible formats for the time-string:
 (when a string can be interpreted as a date or a time, date takes precedence)
 
 1. Date
-	- Millennium: '2'
+	- Millennium: `2`
 	- Century: `20`
 	- Decade: `201`
 	- Year: `2015`, `0002`

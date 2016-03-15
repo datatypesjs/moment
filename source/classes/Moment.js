@@ -1,6 +1,7 @@
 import Instant from './Instant'
 import Duration from '@datatypes/duration'
 import * as startOf from '../startOf'
+import * as endOf from '../endOf'
 import addDurationToInstant from '../addDurationToInstant'
 import precisionToDuration from '../precisionToDuration'
 
@@ -13,6 +14,14 @@ export default class Moment {
 	startOfHour ()		{ startOf.hour(this); return this }
 	startOfMinute ()	{ startOf.minute(this); return this }
 	startOfSecond ()	{ startOf.second(this); return this }
+
+	endOfYear ()	{ endOf.year(this); return this }
+	endOfMonth ()	{ endOf.month(this); return this }
+	endOfWeek ()	{ endOf.week(this); return this }
+	endOfDay ()		{ endOf.day(this); return this }
+	endOfHour ()	{ endOf.hour(this); return this }
+	endOfMinute ()	{ endOf.minute(this); return this }
+	endOfSecond ()	{ endOf.second(this); return this }
 
 	// TODO: Re-add when native es2015 support arrives
 	// add (duration) {}

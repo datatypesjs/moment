@@ -5,14 +5,14 @@ import Instant from '../source/classes/Instant'
 
 
 runTest.skip('2', test => {
-	expect(
-		new Moment(test.title).toObject(),
-		'to equal',
-		{
-			string: test.title,
-			lowerLimit: new Instant('2000-01-01T00:00:00.000Z'),
-			upperLimit: new Instant('3000-01-01T00:00:00.000Z'),
-			precision: 'millennium'
-		}
-	)
+  expect(
+    new Moment(test.title).toObject(),
+    'to equal',
+    {
+      string: test.title,
+      lowerLimit: new Instant('2000-01-01T00:00:00.000Z'),
+      upperLimit: new Instant('3000-01-01T00:00:00.000Z'),
+      precision: 'millennium'
+    }
+  )
 })

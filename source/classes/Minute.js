@@ -5,58 +5,58 @@ import Hour from './Hour'
 
 export default class Minute extends Hour {
 
-	constructor (isoString) {
-		const pattern = /:?([0-5][0-9])(\.[0-9]+)?Z?$/i
-		const matches = isoString.match(pattern)
+  constructor (isoString) {
+    const pattern = /:?([0-5][0-9])(\.[0-9]+)?Z?$/i
+    const matches = isoString.match(pattern)
 
-		if (!matches) {
-			throw new Error(
-				'The provided argument must be valid minute string ' +
-				'and not ' + isoString
-			)
-		}
+    if (!matches) {
+      throw new Error(
+        'The provided argument must be valid minute string ' +
+        'and not ' + isoString
+      )
+    }
 
-		const minute = Number(matches[1])
-		const minuteFraction = Number('0' + matches[2])
+    const minute = Number(matches[1])
+    const minuteFraction = Number('0' + matches[2])
 
-		super(isoString.replace(pattern, ''))
+    super(isoString.replace(pattern, ''))
 
-		this._minute = minute
-	}
+    this._minute = minute
+  }
 
-	clone () {
-		return new Minute(this.string)
-	}
+  clone () {
+    return new Minute(this.string)
+  }
 
 
-	set minute (minute) {
-		delete this._isoString
-		this._minute = minute
-		return this
-	}
-	setMinute (minute) {
-		this.minute = minute
-		return this
-	}
+  set minute (minute) {
+    delete this._isoString
+    this._minute = minute
+    return this
+  }
+  setMinute (minute) {
+    this.minute = minute
+    return this
+  }
 
-	get minute () {
-		return this._minute
-	}
+  get minute () {
+    return this._minute
+  }
 
-	get minuteString () {
-		return zpad(this.minute, 2)
-	}
+  get minuteString () {
+    return zpad(this.minute, 2)
+  }
 
-	get string () {
-		if (!this._isoString) {
-			this._isoString = super.string
-				.replace('Z', ':' + this.minuteString + 'Z')
-		}
+  get string () {
+    if (!this._isoString) {
+      this._isoString = super.string
+        .replace('Z', ':' + this.minuteString + 'Z')
+    }
 
-		return this._isoString
-	}
+    return this._isoString
+  }
 
-	toString () {
-		return this.string
-	}
+  toString () {
+    return this.string
+  }
 }

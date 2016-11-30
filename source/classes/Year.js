@@ -4,44 +4,44 @@ import Moment from './Moment'
 
 
 export default class Year extends Moment {
-	constructor (year) {
-		super()
-		year = Number(year)
-		console.assert(
-			0 <= year && year <= 9999,
-			'Year must be in range [0,9999] and not ' + year
-		)
-		this._year = year
-	}
+  constructor (year) {
+    super()
+    year = Number(year)
+    console.assert(
+      0 <= year && year <= 9999,
+      'Year must be in range [0,9999] and not ' + year
+    )
+    this._year = year
+  }
 
-	clone () {
-		return new Year(this.string)
-	}
-
-
-	set year (year) {
-		delete this._isoString
-		this._year = year
-		return this
-	}
-	setYear (year) {
-		this.year = year
-		return this
-	}
+  clone () {
+    return new Year(this.string)
+  }
 
 
-	get year () {
-		return this._year
-	}
+  set year (year) {
+    delete this._isoString
+    this._year = year
+    return this
+  }
+  setYear (year) {
+    this.year = year
+    return this
+  }
 
-	get yearString () {
-		return zpad(this.year, 2)
-	}
 
-	get string () {
-		if (!this._isoString) {
-			this._isoString = this.yearString
-		}
-		return this._isoString
-	}
+  get year () {
+    return this._year
+  }
+
+  get yearString () {
+    return zpad(this.year, 2)
+  }
+
+  get string () {
+    if (!this._isoString) {
+      this._isoString = this.yearString
+    }
+    return this._isoString
+  }
 }

@@ -17,7 +17,7 @@ These classes are all subclasses of the `Moment` base class.
 
 ```js
 import momentFromString, {Moment, Instant, Year, Month, Day,
-	Hour, Minute, Second, Millisecond} from '@datatypes/moment'
+  Hour, Minute, Second, Millisecond} from '@datatypes/moment'
 
 const year = new Year('2015')
 const month = new Month('2015-11')
@@ -52,36 +52,36 @@ Possible formats for the time-string:
 (when a string can be interpreted as a date or a time, date takes precedence)
 
 1. Date
-	- Millennium: `2`
-	- Century: `20`
-	- Decade: `201`
-	- Year: `2015`, `0002`
-	- Month: `2015-11`
-	- Week:
-		- `2015-W48`
-		- `2015W48`
-	- Day:
-		- `2015-11-24`
-		- `20151124`
-		- `2015-W48-2`
-		- `2015W482`
-		- `2015-328`
-		- `2015328`
+  - Millennium: `2`
+  - Century: `20`
+  - Decade: `201`
+  - Year: `2015`, `0002`
+  - Month: `2015-11`
+  - Week:
+    - `2015-W48`
+    - `2015W48`
+  - Day:
+    - `2015-11-24`
+    - `20151124`
+    - `2015-W48-2`
+    - `2015W482`
+    - `2015-328`
+    - `2015328`
 
 1. Time
-	- Minute:
-		- `21:32`
-		- `2132`
-	- Second:
-		- `21:32:43`
-		- `213243`
-	- Millisecond:
-		- `21:32:43.654`
-		- `213243.654`
+  - Minute:
+    - `21:32`
+    - `2132`
+  - Second:
+    - `21:32:43`
+    - `213243`
+  - Millisecond:
+    - `21:32:43.654`
+    - `213243.654`
 
 1. Datetime
-	- `<date>T<time>`
-	- `<date> <time>`
+  - `<date>T<time>`
+  - `<date> <time>`
 
 
 ## Properties
@@ -132,11 +132,11 @@ This allows for easy chaining:
 
 ```js
 const moment = new Moment()
-	.setYear(2015)
-	.setMonth(11)
-	.setDay(24)
-	.setHour(21)
-	.setMinute(37)
+  .setYear(2015)
+  .setMonth(11)
+  .setDay(24)
+  .setHour(21)
+  .setMinute(37)
 ```
 
 
@@ -156,10 +156,10 @@ The lower limit is always inclusive and the upper limit exclusive.
 
 ```js
 new Millisecond('2015-11-24T21:37:42.123Z').toObject() === {
-	string: '2015-11-24T21:37:42.123Z',
-	lowerLimit: new Instant('2015-11-24T21:37:42.123Z'),
-	upperLimit: new Instant('2015-11-24T21:37:42.124Z'),
-	precision: 'millisecond'
+  string: '2015-11-24T21:37:42.123Z',
+  lowerLimit: new Instant('2015-11-24T21:37:42.123Z'),
+  upperLimit: new Instant('2015-11-24T21:37:42.124Z'),
+  precision: 'millisecond'
 }
 ```
 
@@ -171,13 +171,13 @@ Mutates a moment by setting it to the start of a unit of time.
 ```js
 const moment = new Millisecond('2115-11-24T18:37:22.345')
 
-moment.startOfYear()	// 2115-01-01T00:00:00.000Z
-moment.startOfMonth()	// 2115-11-01T00:00:00.000Z
-moment.startOfWeek()	// 2115-11-18T00:00:00.000Z
-moment.startOfDay()		// 2115-11-24T00:00:00.000Z
-moment.startOfHour()	// 2115-11-24T18:00:00.000Z
-moment.startOfMinute()	// 2115-11-24T18:37:00.000Z
-moment.startOfSecond()	// 2115-11-24T18:37:22.000Z
+moment.startOfYear()   // 2115-01-01T00:00:00.000Z
+moment.startOfMonth()  // 2115-11-01T00:00:00.000Z
+moment.startOfWeek()   // 2115-11-18T00:00:00.000Z
+moment.startOfDay()    // 2115-11-24T00:00:00.000Z
+moment.startOfHour()   // 2115-11-24T18:00:00.000Z
+moment.startOfMinute() // 2115-11-24T18:37:00.000Z
+moment.startOfSecond() // 2115-11-24T18:37:22.000Z
 ```
 
 
@@ -188,13 +188,13 @@ Mutates a moment by setting it to the end of a unit of time.
 ```js
 const moment = new Millisecond('2115-11-24T18:37:22.345')
 
-moment.endOfYear()		// 2115-12-31T23:59:59.999Z
-moment.endOfMonth()		// 2115-10-31T23:59:59.999Z
-moment.endOfWeek()		// 2115-11-03T23:59:59.999Z
-moment.endOfDay()		// 2115-10-29T23:59:59.999Z
-moment.endOfHour()		// 2115-10-29T18:59:59.999Z
-moment.endOfMinute()	// 2115-10-29T18:37:59.999Z
-moment.endOfSecond()	// 2115-10-29T18:37:22.999Z
+moment.endOfYear()   // 2115-12-31T23:59:59.999Z
+moment.endOfMonth()  // 2115-10-31T23:59:59.999Z
+moment.endOfWeek()   // 2115-11-03T23:59:59.999Z
+moment.endOfDay()    // 2115-10-29T23:59:59.999Z
+moment.endOfHour()   // 2115-10-29T18:59:59.999Z
+moment.endOfMinute() // 2115-10-29T18:37:59.999Z
+moment.endOfSecond() // 2115-10-29T18:37:22.999Z
 ```
 
 

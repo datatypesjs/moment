@@ -1,9 +1,9 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import moment from '../source/index'
-import Instant from '../source/classes/Instant'
-import Millisecond from '../source/classes/Millisecond'
+import moment from '../build/index'
+import Instant from '../build/classes/Instant'
+import Millisecond from '../build/classes/Millisecond'
 
 runTest('2015-11-24T21:15:42.123', test => {
   const millisecond = new Millisecond(test.title)

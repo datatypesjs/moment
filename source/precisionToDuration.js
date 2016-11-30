@@ -14,11 +14,12 @@ export default (precision) => {
     hour: new Duration('P1H'),
     minute: new Duration('PT1M'),
     second: new Duration('P1S'),
-    millisecond: new Duration('P0.001S')
+    millisecond: new Duration('P0.001S'),
   }
 
-  if (!map.hasOwnProperty(precision))
+  if (!map.hasOwnProperty(precision)) {
     throw new Error(precision + ' is no valid precision String')
+  }
 
   return map[precision]
 }

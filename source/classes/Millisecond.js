@@ -1,25 +1,28 @@
+import assert from 'assert'
+
 import zpad from 'zpad'
 
 import Second from './Second'
 
 
 export default class Millisecond extends Second {
-
   constructor (isoString) {
-    console.assert(
+    assert(
       /\.[0-9]+Z?$/i.test(isoString),
       'The provided argument must be valid millisecond string ' +
       'and not ' + isoString
     )
 
     const fragments = isoString.split('.')
-    const digits = fragments.pop().replace('Z', '')
+    const digits = fragments
+        .pop()
+        .replace('Z', '')
     const millisecond = Number('0.' + digits) * 1000
 
     super(fragments.join('.'))
 
-    console.assert(
-      0 <= millisecond && millisecond < 1000,
+    assert(
+      0 <= millisecond && millisecond < 1000, // eslint-disable-line yoda
       'Millisecond must be in range [0,1000[ and not ' + millisecond
     )
     this._millisecond = millisecond

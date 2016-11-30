@@ -7,22 +7,23 @@ import precisionToDuration from '../precisionToDuration'
 
 
 export default class Moment {
+  /* eslint-disable brace-style*/
+  startOfYear ()   { startOf.year(this); return this }
+  startOfMonth ()  { startOf.month(this); return this }
+  startOfWeek ()   { startOf.week(this); return this }
+  startOfDay ()    { startOf.day(this); return this }
+  startOfHour ()   { startOf.hour(this); return this }
+  startOfMinute () { startOf.minute(this); return this }
+  startOfSecond () { startOf.second(this); return this }
 
-  startOfYear ()    { startOf.year(this); return this }
-  startOfMonth ()   { startOf.month(this); return this }
-  startOfWeek ()    { startOf.week(this); return this }
-  startOfDay ()   { startOf.day(this); return this }
-  startOfHour ()    { startOf.hour(this); return this }
-  startOfMinute ()  { startOf.minute(this); return this }
-  startOfSecond ()  { startOf.second(this); return this }
-
-  endOfYear ()  { endOf.year(this); return this }
-  endOfMonth () { endOf.month(this); return this }
-  endOfWeek ()  { endOf.week(this); return this }
-  endOfDay ()   { endOf.day(this); return this }
-  endOfHour ()  { endOf.hour(this); return this }
-  endOfMinute ()  { endOf.minute(this); return this }
-  endOfSecond ()  { endOf.second(this); return this }
+  endOfYear ()   { endOf.year(this); return this }
+  endOfMonth ()  { endOf.month(this); return this }
+  endOfWeek ()   { endOf.week(this); return this }
+  endOfDay ()    { endOf.day(this); return this }
+  endOfHour ()   { endOf.hour(this); return this }
+  endOfMinute () { endOf.minute(this); return this }
+  endOfSecond () { endOf.second(this); return this }
+  /* eslint-enable brace-style*/
 
   // TODO: Re-add when native es2015 support arrives
   // add (duration) {}
@@ -53,11 +54,13 @@ export default class Moment {
   }
 
   startsSimultaneous (moment) {
-    return +moment.lowerLimit === +this.lowerLimit
+    // Convert dates to numbers to make them comparable
+    return Number(moment.lowerLimit) === Number(this.lowerLimit)
   }
 
   endsSimultaneous (moment) {
-    return +moment.upperLimit === +this.upperLimit
+    // Convert dates to numbers to make them comparable
+    return Number(moment.upperLimit) === Number(this.upperLimit)
   }
 
   isSimultaneous (moment) {
@@ -72,9 +75,11 @@ export default class Moment {
 
     return this._isoString
   }
+  /* eslint-disable brace-style*/
   get isoString () { return this.string }
   toString () { return this.string }
   toJSON () { return this.string }
+  /* eslint-enable brace-style*/
 
   get intervalString () {
     return this.lowerLimit.toISOString() +

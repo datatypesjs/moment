@@ -7,14 +7,13 @@ import Instant from './Instant'
 
 
 export default class DateTime {
-
   constructor (dateTimeString) {
     dateTimeString = dateTimeString.replace(' ', 'T')
     this._isoString = dateTimeString
 
-    let items
+    let items = splitString(dateTimeString, 'T')
 
-    if (items = splitString(dateTimeString, 'T')) {
+    if (items) {
       this._date = new Date(items[0])
       this._timeOfDay = new TimeOfDay(items[1].replace('Z', ''))
       this._precision = this._timeOfDay.precision
@@ -28,18 +27,18 @@ export default class DateTime {
       )
     }
     else {
-
       this._lowerLimit = new Instant(dateTimeString)
 
-      if (items = splitString(dateTimeString, '-')) {
-        let precision = (items.length === 3) ? 'day' : 'month'
+      items = splitString(dateTimeString, '-')
+      if (items) {
+        const precision = items.length === 3 ? 'day' : 'month'
 
         Object.assign(this, {
           _upperLimit: addDurationToInstant(
             this._lowerLimit,
             precisionToDuration(precision)
           ),
-          _precision: precision
+          _precision: precision,
         })
       }
       else if (dateTimeString.length === 4) {
@@ -49,7 +48,7 @@ export default class DateTime {
             this._lowerLimit,
             precisionToDuration('year')
           ),
-          _precision: 'year'
+          _precision: 'year',
         })
       }
       else if (dateTimeString.length === 3) {
@@ -63,7 +62,7 @@ export default class DateTime {
             this._lowerLimit,
             precisionToDuration('decade')
           ),
-          _precision: 'decade'
+          _precision: 'decade',
         })
       }
       else if (dateTimeString.length === 2) {
@@ -77,7 +76,7 @@ export default class DateTime {
             this._lowerLimit,
             precisionToDuration('century')
           ),
-          _precision: 'century'
+          _precision: 'century',
         })
       }
       else if (dateTimeString.length === 1) {
@@ -91,13 +90,13 @@ export default class DateTime {
             this._lowerLimit,
             precisionToDuration('millennium')
           ),
-          _precision: 'millennium'
+          _precision: 'millennium',
         })
       }
     }
   }
 
   get string () {
-    serializeDate(object) + 'T' + serializeTime(object) + 'Z'
+    return `${this._date}T${this._timeOfDay}Z`
   }
 }

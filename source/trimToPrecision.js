@@ -1,7 +1,9 @@
+import assert from 'assert'
+
 const isoRegex = /[0-9]{4}(-[0-9]{2}){2}T[0-9]{2}(:[0-9]{2}){2}\.[0-9]{3}Z/i
 
 export default (isoString, precision) => {
-  console.assert(
+  assert(
     isoRegex.test(isoString),
     `"${isoString}" is no valid extended ISO string`
   )

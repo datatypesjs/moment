@@ -6,7 +6,8 @@ import trimToPrecision from './trimToPrecision'
 export default (moment, duration) => {
   return momentFromString(
     trimToPrecision(
-      addDurationToInstant(moment.lowerLimit, duration).toISOString(),
+      addDurationToInstant(moment.lowerLimit, duration)
+        .toISOString(),
       duration.precision
     )
   )

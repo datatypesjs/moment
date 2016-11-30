@@ -2,11 +2,11 @@ import runTest from 'ava'
 import expect from 'unexpected'
 import Duration from '@datatypes/duration'
 
-import momentFromString, {add, subtract} from '../source/index'
-import Instant from '../source/classes/Instant'
+import momentFromString, {add, subtract} from '..'
+import Instant from '../build/classes/Instant'
 
 
-runTest('add duration to moment', test => {
+runTest('add duration to moment', () => {
   const moment = momentFromString('2015-11-25')
   const oneHour = new Duration('P1H')
   const newMoment = add(moment, oneHour)
@@ -20,7 +20,7 @@ runTest('add duration to moment', test => {
 })
 
 
-runTest('subtract duration from moment', test => {
+runTest('subtract duration from moment', () => {
   const moment = momentFromString('2015-11-25')
   const oneHour = new Duration('P1H')
   const newMoment = subtract(moment, oneHour)

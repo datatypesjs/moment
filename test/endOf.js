@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Millisecond from '../source/classes/Millisecond'
+import Millisecond from '../build/classes/Millisecond'
 
 const unitToIsoString = {
   // TODO: Implement
@@ -18,11 +18,14 @@ const unitToIsoString = {
 }
 
 
-for (let unit in unitToIsoString) {
-  runTest('end of ' + unit, test => {
+for (const unit in unitToIsoString) {
+  if (!unitToIsoString.hasOwnProperty(unit)) continue
+  runTest('end of ' + unit, () => {
     const moment = new Millisecond('2115-10-29T18:37:22.345')
     const functionName = 'endOf' +
-      unit.slice(0,1).toUpperCase() +
+      unit
+        .slice(0, 1)
+        .toUpperCase() +
       unit.slice(1)
 
     if (moment[functionName]) {

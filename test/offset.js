@@ -2,11 +2,10 @@ import runTest from 'ava'
 import expect from 'unexpected'
 import Duration from '@datatypes/duration'
 
-import momentFromString, {add, subtract} from '../source/index'
-import Instant from '../source/classes/Instant'
+import momentFromString from '../build/index'
 
 
-runTest('get maximum offset to another moment', test => {
+runTest('get maximum offset to another moment', () => {
   const moment1 = momentFromString('2015-11-25')
   const moment2 = momentFromString('2015-11-26')
   const offset = moment1.maximumOffset(moment2)
@@ -16,7 +15,7 @@ runTest('get maximum offset to another moment', test => {
 })
 
 
-runTest('check if moment is before another moment', test => {
+runTest('check if moment is before another moment', () => {
   const moment1 = momentFromString('2015-11-25')
   const moment2 = momentFromString('2015-11-26')
 
@@ -24,7 +23,7 @@ runTest('check if moment is before another moment', test => {
 })
 
 
-runTest('check if moment is after another moment', test => {
+runTest('check if moment is after another moment', () => {
   const moment1 = momentFromString('2015-11-25')
   const moment2 = momentFromString('2015-11-26')
 
@@ -32,7 +31,7 @@ runTest('check if moment is after another moment', test => {
 })
 
 
-runTest('check if moment starts simultaneous with another moment', test => {
+runTest('check if moment starts simultaneous with another moment', () => {
   const moment1 = momentFromString('2015-11-01')
   const moment2 = momentFromString('2015-11')
 
@@ -40,7 +39,7 @@ runTest('check if moment starts simultaneous with another moment', test => {
 })
 
 
-runTest('check if moment ends simultaneous with another moment', test => {
+runTest('check if moment ends simultaneous with another moment', () => {
   const moment1 = momentFromString('2015-11-30')
   const moment2 = momentFromString('2015-11')
 
@@ -48,7 +47,7 @@ runTest('check if moment ends simultaneous with another moment', test => {
 })
 
 
-runTest('check if moment is simultaneous to another moment', test => {
+runTest('check if moment is simultaneous to another moment', () => {
   const moment1 = momentFromString('2015-11-25')
   const moment2 = momentFromString('2015-11-25')
 

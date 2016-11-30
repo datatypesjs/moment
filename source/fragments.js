@@ -1,5 +1,3 @@
-'use strict'
-
 export default [
   'years',
   'months',
@@ -8,5 +6,5 @@ export default [
   'hours',
   'minutes',
   'seconds',
-  'milliseconds'
+  'milliseconds',
 ]

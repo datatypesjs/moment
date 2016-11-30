@@ -1,10 +1,11 @@
+import assert from 'assert'
+
 import zpad from 'zpad'
 
 import Minute from './Minute'
 
 
 export default class Second extends Minute {
-
   constructor (isoString) {
     const pattern = /:?([0-9]{2})(\.[0-9]+)?Z?$/i
     const matches = isoString.match(pattern)
@@ -17,12 +18,11 @@ export default class Second extends Minute {
     }
 
     const second = Number(matches[1])
-    const secondFraction = Number('0' + matches[2])
 
     super(isoString.replace(pattern, ''))
 
-    console.assert(
-      0 <= second && second < 60,
+    assert(
+      0 <= second && second < 60, // eslint-disable-line yoda
       'Second must be in range [0,60[ and not ' + second
     )
     this._second = second
@@ -53,7 +53,7 @@ export default class Second extends Minute {
 
   get string () {
     if (!this._isoString) {
-      this._isoString = this._isoString = super.string
+      this._isoString = super.string
           .replace('Z', ':' + this.secondString + 'Z')
     }
 

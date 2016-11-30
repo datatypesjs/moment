@@ -1,10 +1,11 @@
+import assert from 'assert'
+
 import zpad from 'zpad'
 
 import Day from './Day'
 
 
 export default class Hour extends Day {
-
   constructor (isoString) {
     const pattern = /T([01][0-9]|2[0-4])(\.[0-9]+)?Z?$/i
     const matches = isoString.match(pattern)
@@ -17,10 +18,13 @@ export default class Hour extends Day {
     }
 
     const hour = Number(matches[1])
-    const hourFraction = Number('0' + matches[2])
 
     super(isoString.replace(pattern, ''))
 
+    assert(
+      0 <= hour && hour < 24, // eslint-disable-line yoda
+      'Minute must be in range [0,24[ and not ' + hour
+    )
     this._hour = hour
   }
 

@@ -4,7 +4,8 @@ export default class Time {
   constructor (timeString) {
     timeString = timeString.replace(/\:/g, '')
 
-    let [time, fraction = 0] = timeString.split('.')
+    const [time] = timeString.split('.')
+    let [, fraction = 0] = timeString.split('.')
 
     this._hours = 0
     this._minutes = 0
@@ -29,12 +30,13 @@ export default class Time {
     // Create internal timeString
     this.getString()
 
-    this.precision = this._milliseconds ?
-      'millisecond' :
-      (this._seconds ?
-        'second' :
-        (this._minutes ? 'minute' : 'hour')
-      )
+    this.precision = this._milliseconds
+    ? 'millisecond'
+    : this._seconds
+      ? 'second'
+      : this._minutes
+        ? 'minute'
+        : 'hour'
   }
 
   // Hours
@@ -52,8 +54,8 @@ export default class Time {
     this.hours = hours
     return this
   }
-  get hours () { return this._hours }
-  getHours () { return this._hours }
+  get hours () { return this._hours } // eslint-disable-line brace-style
+  getHours () { return this._hours } // eslint-disable-line brace-style
 
 
   // Minutes
@@ -66,8 +68,8 @@ export default class Time {
     this.minutes = minutes
     return this
   }
-  get minutes () { return this._minutes }
-  getMinutes () { return this._minutes }
+  get minutes () { return this._minutes } // eslint-disable-line brace-style
+  getMinutes () { return this._minutes } // eslint-disable-line brace-style
 
 
   // Seconds
@@ -80,8 +82,8 @@ export default class Time {
     this.seconds = seconds
     return this
   }
-  get seconds () { return this._seconds }
-  getSeconds () { return this._seconds }
+  get seconds () { return this._seconds } // eslint-disable-line brace-style
+  getSeconds () { return this._seconds } // eslint-disable-line brace-style
 
 
   // Milliseconds
@@ -94,7 +96,9 @@ export default class Time {
     this.milliseconds = milliseconds
     return this
   }
+  // eslint-disable-next-line brace-style
   get milliseconds () { return this._milliseconds }
+  // eslint-disable-next-line brace-style
   getMilliseconds () { return this._milliseconds }
 
 

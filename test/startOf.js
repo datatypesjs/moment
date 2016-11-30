@@ -1,8 +1,8 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Millisecond from '../source/classes/Millisecond'
-import Day from '../source/classes/Day'
+import Millisecond from '../build/classes/Millisecond'
+import Day from '../build/classes/Day'
 
 const unitToIsoString = {
   // TODO: Implement
@@ -19,11 +19,14 @@ const unitToIsoString = {
 }
 
 
-for (let unit in unitToIsoString) {
-  runTest('start of ' + unit, test => {
+for (const unit in unitToIsoString) {
+  if (!unitToIsoString.hasOwnProperty(unit)) continue
+  runTest('start of ' + unit, () => {
     const moment = new Millisecond('2115-11-24T18:37:22.345')
     const functionName = 'startOf' +
-      unit.slice(0,1).toUpperCase() +
+      unit
+        .slice(0, 1)
+        .toUpperCase() +
       unit.slice(1)
 
     if (moment[functionName]) {
@@ -34,7 +37,7 @@ for (let unit in unitToIsoString) {
 }
 
 
-runTest ('start of week (extended test)', test => {
+runTest('start of week (extended test)', () => {
   const dateToReference = {
     '2016-03-03': '2016-02-29', // Previous month
     '2016-03-06': '2016-02-29', // Sunday to previous month
@@ -42,9 +45,12 @@ runTest ('start of week (extended test)', test => {
     '2016-03-10': '2016-03-07', // Regular weekday
     '2016-03-13': '2016-03-07', // Sunday
   }
-  for (let date in dateToReference) {
+  for (const date in dateToReference) {
+    if (!dateToReference.hasOwnProperty(date)) continue
     expect(
-      new Day(date).startOfWeek().isoString,
+      new Day(date)
+        .startOfWeek()
+        .isoString,
       'to equal',
       dateToReference[date]
     )

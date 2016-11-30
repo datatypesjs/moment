@@ -1,22 +1,21 @@
+import assert from 'assert'
+
 import zpad from 'zpad'
 
-import addDurationToInstant from '../addDurationToInstant'
-import precisionToDuration from '../precisionToDuration'
 import Year from './Year.js'
 
 
 export default class Month extends Year {
-
   constructor (isoString) {
-    console.assert(/-(0[1-9]|1[0-2])$/.test(isoString))
+    assert(/-(0[1-9]|1[0-2])$/.test(isoString))
 
     const fragments = isoString.split('-')
     const month = Number(fragments[1])
 
     super(fragments[0])
 
-    console.assert(
-      1 <= month && month <= 12,
+    assert(
+      1 <= month && month <= 12, // eslint-disable-line yoda
       'Month must be in range [1,12] and not ' + month
     )
     this._month = month

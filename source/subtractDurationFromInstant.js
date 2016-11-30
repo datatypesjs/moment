@@ -1,45 +1,47 @@
-import Duration from '@datatypes/duration'
+import assert from 'assert'
 
+import Duration from '@datatypes/duration'
 import Instant from './classes/Instant'
 
 
 export default function (instant, duration) {
-  console.assert(
+  assert(
     instant instanceof Instant,
     instant + ' is not an instance of class "Instant"'
   )
-  console.assert(
+  assert(
     duration instanceof Duration,
     duration + ' is not an instance of class "Duration"'
   )
 
-  let clone = new Instant(instant.toJSON())
+  const clone = new Instant(instant.toJSON())
 
-  if (duration.milliseconds)
+  if (duration.milliseconds) {
     clone.setUTCMilliseconds(
       clone.getUTCMilliseconds() - duration.milliseconds
     )
-
-  if (duration.seconds)
+  }
+  if (duration.seconds) {
     clone.setUTCSeconds(clone.getUTCSeconds() - duration.seconds)
-
-  if (duration.minutes)
+  }
+  if (duration.minutes) {
     clone.setUTCMinutes(clone.getUTCMinutes() - duration.minutes)
-
-  if (duration.hours)
+  }
+  if (duration.hours) {
     clone.setUTCHours(clone.getUTCHours() - duration.hours)
-
-  if (duration.days)
+  }
+  if (duration.days) {
     clone.setUTCDate(clone.getUTCDate() - duration.days)
-
-  if (duration.weeks)
+  }
+  if (duration.weeks) {
     clone.setUTCDate(clone.getUTCDate() - (duration.weeks * 7))
-
-  if (duration.months)
+  }
+  if (duration.months) {
     clone.setUTCMonth(clone.getUTCMonth() - duration.months)
-
-  if (duration.years)
+  }
+  if (duration.years) {
     clone.setUTCFullYear(clone.getUTCFullYear() - duration.years)
+  }
 
   return clone
 }

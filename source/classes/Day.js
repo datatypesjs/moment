@@ -1,3 +1,5 @@
+import assert from 'assert'
+
 import zpad from 'zpad'
 
 import Month from './Month'
@@ -6,15 +8,15 @@ import Month from './Month'
 export default class Day extends Month {
 
   constructor (isoString) {
-    console.assert(/-(0[1-9]|[12][0-9]|3[01])$/.test(isoString))
+    assert(/-(0[1-9]|[12][0-9]|3[01])$/.test(isoString))
 
     const fragments = isoString.split('-')
     const day = Number(fragments.pop())
 
     super(fragments.join('-'))
 
-    console.assert(
-      1 <= day && day <= 31,
+    assert(
+      1 <= day && day <= 31, // eslint-disable-line yoda
       'Day must be in range [1,31] and not ' + day
     )
     this._day = day

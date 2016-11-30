@@ -6,5 +6,5 @@ export default [
   'hour',
   'minute',
   'second',
-  'millisecond'
+  'millisecond',
 ]

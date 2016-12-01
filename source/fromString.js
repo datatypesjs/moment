@@ -1,3 +1,6 @@
+import Millennium from './classes/Millennium'
+import Century from './classes/Century'
+import Decade from './classes/Decade'
 import Year from './classes/Year'
 import Month from './classes/Month'
 import Day from './classes/Day'
@@ -96,6 +99,9 @@ export default (isoString) => {
 
   // Only year
   if (isoString.length === 4) return new Year(isoString)
+  else if (isoString.length === 3) return new Decade(isoString)
+  else if (isoString.length === 2) return new Century(isoString)
+  else if (isoString.length === 1) return new Millennium(isoString)
 
   if (isoString.includes('-')) {
     // ordinal date

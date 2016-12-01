@@ -75,11 +75,11 @@ export default class Moment {
 
     return this._isoString
   }
-  /* eslint-disable brace-style*/
+  /* eslint-disable brace-style */
   get isoString () { return this.string }
   toString () { return this.string }
   toJSON () { return this.string }
-  /* eslint-enable brace-style*/
+  /* eslint-enable brace-style */
 
   get intervalString () {
     return this.lowerLimit.toISOString() +

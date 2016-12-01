@@ -59,8 +59,4 @@ export default class Minute extends Hour {
 
     return this._isoString
   }
-
-  toString () {
-    return this.string
-  }
 }

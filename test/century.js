@@ -1,20 +1,18 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
+import momentFromString from '../build'
 import Instant from '../build/classes/Instant'
-import Moment from '../build/classes/Moment'
+import Century from '../build/classes/Century'
 
 
-runTest.skip('20', test => {
-  expect(
-    new Moment(test.title)
-      .toObject(),
-    'to equal',
-    {
-      string: test.title,
-      lowerLimit: new Instant('2000-01-01T00:00:00.000Z'),
-      upperLimit: new Instant('2100-01-01T00:00:00.000Z'),
-      precision: 'century',
-    }
-  )
+runTest('20', test => {
+  const century = new Century(test.title)
+  const centuryObject = {
+    string: test.title,
+    lowerLimit: new Instant('2000-01-01T00:00:00.000Z'),
+    upperLimit: new Instant('2100-01-01T00:00:00.000Z'),
+  }
+  expect(century.object, 'to equal', centuryObject)
+  expect(momentFromString(test.title).object, 'to equal', centuryObject)
 })

@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import moment from '../build/index'
+import momentFromString from '../build'
 import Instant from '../build/classes/Instant'
 import Day from '../build/classes/Day'
 
@@ -15,7 +15,7 @@ runTest('2015-11-24', test => {
   }
 
   expect(day.object, 'to equal', dayObject)
-  expect(moment(test.title).object, 'to equal', dayObject)
+  expect(momentFromString(test.title).object, 'to equal', dayObject)
 })
 
 runTest.skip('2015-W48-2', test => {

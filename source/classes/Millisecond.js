@@ -17,9 +17,9 @@ export default class Millisecond extends Second {
     const digits = fragments
         .pop()
         .replace('Z', '')
-    const millisecond = Number('0.' + digits) * 1000
+    const millisecond = Number(`0.${digits}`) * 1000
 
-    super(fragments.join('.'))
+    super(fragments[0])
 
     assert(
       0 <= millisecond && millisecond < 1000, // eslint-disable-line yoda

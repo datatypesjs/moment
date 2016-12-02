@@ -1,20 +1,7 @@
-import assert from 'assert'
-
-import Duration from '@datatypes/duration'
 import Instant from './classes/Instant'
 
-
 export default function (instant, duration) {
-  assert(
-    instant instanceof Instant,
-    instant + ' is not an instance of class "Instant"'
-  )
-  assert(
-    duration instanceof Duration,
-    duration + ' is not an instance of class "Duration"'
-  )
-
-  const clone = new Instant(instant.toJSON())
+  const clone = new Instant(instant)
 
   if (duration.milliseconds) {
     clone.setUTCMilliseconds(

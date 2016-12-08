@@ -35,7 +35,7 @@
     "babel-preset-latest": "^6.16.0",
     "babel-register": "^6.18.0",
     "eslint": "^3.11.1",
-    "javascript-styleguide": "^1.0.0",
+    "eslint-config-javascript": "^1.1.0",
     "unexpected": "^10.20.0"
   },
   "repository": {
@@ -47,17 +47,7 @@
   },
   "homepage": "https://github.com/datatypesjs/moment#readme",
   "eslintConfig": {
-    "root": true,
-    "extends": "./node_modules/javascript-styleguide/.eslintrc.yaml",
-    "rules": {
-      "indent": [
-        "error",
-        2,
-        {
-          "SwitchCase": 1
-        }
-      ]
-    }
+    "extends": "eslint-config-javascript"
   },
   "ava": {
     "require": [

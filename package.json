@@ -1,6 +1,6 @@
 {
   "name": "@datatypes/moment",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "ISO 8601 based time and date module",
   "main": "build/index",
   "directories": {

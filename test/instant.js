@@ -1,7 +1,7 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import Instant from '../build/classes/Instant'
+import Instant from '../source/classes/Instant'
 
 
 // Dash separated date section

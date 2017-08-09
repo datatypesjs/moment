@@ -1,9 +1,9 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import momentFromString from '../build'
-import Instant from '../build/classes/Instant'
-import Day from '../build/classes/Day'
+import momentFromString from '../source'
+import Instant from '../source/classes/Instant'
+import Day from '../source/classes/Day'
 import WeekDay from '../source/classes/WeekDay'
 import OrdinalDay from '../source/classes/OrdinalDay'
 

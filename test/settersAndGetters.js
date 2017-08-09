@@ -1,9 +1,9 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import momentFromString from '../build/index' // eslint-disable-line
-import Minute from '../build/classes/Minute'
-import Millisecond from '../build/classes/Millisecond'
+import momentFromString from '../source/index' // eslint-disable-line
+import Minute from '../source/classes/Minute'
+import Millisecond from '../source/classes/Millisecond'
 
 
 runTest('set & get year', () => {

@@ -1,9 +1,9 @@
 import runTest from 'ava'
 import expect from 'unexpected'
 
-import momentFromString from '../build'
-import Instant from '../build/classes/Instant'
-import Millennium from '../build/classes/Millennium'
+import momentFromString from '../source'
+import Instant from '../source/classes/Instant'
+import Millennium from '../source/classes/Millennium'
 
 runTest('2', test => {
   const millennium = new Millennium(test.title)

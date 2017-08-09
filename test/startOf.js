@@ -2,9 +2,9 @@ import runTest from 'ava'
 import expect from 'unexpected'
 
 // eslint-disable-next-line no-unused-vars
-import momentFromString from '../build' 
-import Millisecond from '../build/classes/Millisecond'
-import Day from '../build/classes/Day'
+import momentFromString from '../source' 
+import Millisecond from '../source/classes/Millisecond'
+import Day from '../source/classes/Day'
 
 const unitToIsoString = {
   millenium: '2000-00-00T00:00:00.000Z',

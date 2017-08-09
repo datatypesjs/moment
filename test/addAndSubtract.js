@@ -3,7 +3,7 @@ import expect from 'unexpected'
 import Duration from '@datatypes/duration'
 
 import momentFromString, {add, subtract} from '..'
-import Instant from '../build/classes/Instant'
+import Instant from '../source/classes/Instant'
 
 
 runTest('add duration to moment', () => {

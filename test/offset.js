@@ -2,7 +2,7 @@ import runTest from 'ava'
 import expect from 'unexpected'
 import Duration from '@datatypes/duration'
 
-import momentFromString from '../build/index'
+import momentFromString from '../source/index'
 
 
 runTest('get maximum offset to another moment', () => {

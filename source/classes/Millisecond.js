@@ -10,20 +10,20 @@ export default class Millisecond extends Second {
     assert(
       /\.[0-9]+Z?$/i.test(isoString),
       'The provided argument must be valid millisecond string ' +
-      'and not ' + isoString
+      `and not ${isoString}`
     )
 
     const fragments = isoString.split('.')
     const digits = fragments
-        .pop()
-        .replace('Z', '')
+      .pop()
+      .replace('Z', '')
     const millisecond = Number(`0.${digits}`) * 1000
 
     super(fragments[0])
 
     assert(
       0 <= millisecond && millisecond < 1000, // eslint-disable-line yoda
-      'Millisecond must be in range [0,1000[ and not ' + millisecond
+      `Millisecond must be in range [0,1000[ and not ${millisecond}`
     )
     this._millisecond = millisecond
   }
@@ -53,7 +53,7 @@ export default class Millisecond extends Second {
   get string () {
     if (!this._isoString) {
       this._isoString = super.string
-        .replace('Z', '.' + this.millisecondString + 'Z')
+        .replace('Z', `.${this.millisecondString}Z`)
     }
 
     return this._isoString

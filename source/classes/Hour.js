@@ -13,7 +13,7 @@ export default class Hour extends Day {
     if (!matches) {
       throw new Error(
         'The provided argument must be valid ISO string for an hour ' +
-        'and not ' + isoString
+        `and not ${isoString}`
       )
     }
 
@@ -23,7 +23,7 @@ export default class Hour extends Day {
 
     assert(
       0 <= hour && hour < 24, // eslint-disable-line yoda
-      'Minute must be in range [0,24[ and not ' + hour
+      `Minute must be in range [0,24[ and not ${hour}`
     )
     this._hour = hour
   }
@@ -53,7 +53,7 @@ export default class Hour extends Day {
 
   get string () {
     if (!this._isoString) {
-      this._isoString = super.string + 'T' + this.hourString + 'Z'
+      this._isoString = `${super.string}T${this.hourString}Z`
     }
 
     return this._isoString

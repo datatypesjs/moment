@@ -19,7 +19,7 @@ export default class DateTime {
       this._precision = this._timeOfDay.precision
 
       this._lowerLimit = new Instant(
-        this._date.string + 'T' + this._timeOfDay.string + 'Z'
+        `${this._date.string}T${this._timeOfDay.string}Z`
       )
       this._upperLimit = addDurationToInstant(
         this._lowerLimit,

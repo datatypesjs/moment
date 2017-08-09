@@ -6,9 +6,13 @@ import Month from './Month'
 
 
 export default class Day extends Month {
-
   constructor (isoString) {
-    assert(/-(0[1-9]|[12][0-9]|3[01])$/.test(isoString))
+    const regex = /-(0[1-9]|[12][0-9]|3[01])$/
+
+    assert(
+      regex.test(isoString),
+      `${isoString} does not match ${regex}`
+    )
 
     const fragments = isoString.split('-')
     const day = Number(fragments.pop())
@@ -17,7 +21,7 @@ export default class Day extends Month {
 
     assert(
       1 <= day && day <= 31, // eslint-disable-line yoda
-      'Day must be in range [1,31] and not ' + day
+      `Day must be in range [1,31] and not ${day}`
     )
     this._day = day
   }
@@ -25,7 +29,6 @@ export default class Day extends Month {
   clone () {
     return new Day(this.string)
   }
-
 
   set day (day) {
     delete this._isoString
@@ -47,7 +50,7 @@ export default class Day extends Month {
 
   get string () {
     if (!this._isoString) {
-      this._isoString = super.string + '-' + this.dayString
+      this._isoString = `${super.string}-${this.dayString}`
     }
 
     return this._isoString

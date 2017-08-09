@@ -3,7 +3,10 @@ import Century from './classes/Century'
 import Decade from './classes/Decade'
 import Year from './classes/Year'
 import Month from './classes/Month'
+import Week from './classes/Week'
+import WeekDay from './classes/WeekDay'
 import Day from './classes/Day'
+import OrdinalDay from './classes/OrdinalDay'
 import Hour from './classes/Hour'
 import Minute from './classes/Minute'
 import Second from './classes/Second'
@@ -15,7 +18,7 @@ export default (isoString) => {
     .toUpperCase()
     .replace('Z', '')
 
-  const invalidError = new Error(isoString + ' is no valid ISO string')
+  const invalidError = new Error(`${isoString} is no valid ISO string`)
 
   // Date time
   if (isoString.includes('T')) {
@@ -91,28 +94,32 @@ export default (isoString) => {
 
   // Week date
   if (isoString.includes('W')) {
-    // 2015-W37
-    // TODO: if (isoString.length === 8) return new Week(isoString)
     // 2015-W37-5
-    if (isoString.length === 10) return new Day(isoString)
+    if (isoString.length === 10) return new WeekDay(isoString)
+
+    // 2015-W37
+    if (isoString.length === 8) return new Week(isoString)
   }
 
   // Only year
   if (isoString.length === 4) return new Year(isoString)
-  else if (isoString.length === 3) return new Decade(isoString)
-  else if (isoString.length === 2) return new Century(isoString)
-  else if (isoString.length === 1) return new Millennium(isoString)
+  if (isoString.length === 3) return new Decade(isoString)
+  if (isoString.length === 2) return new Century(isoString)
+  if (isoString.length === 1) return new Millennium(isoString)
 
   if (isoString.includes('-')) {
-    // ordinal date
-    if (isoString.length === 8) return new Day(isoString)
+    // 2015-11-24
     if (isoString.length === 10) return new Day(isoString)
-    else return new Month(isoString)
+
+    // 2015-328
+    if (isoString.length === 8) return new OrdinalDay(isoString)
+
+    // 2015-11
+    return new Month(isoString)
   }
-  else {
-    if (isoString.length === 6) return new Month(isoString)
-    if (isoString.length === 8) return new Day(isoString)
-  }
+
+  if (isoString.length === 6) return new Month(isoString)
+  if (isoString.length === 8) return new Day(isoString)
 
   throw invalidError
 }

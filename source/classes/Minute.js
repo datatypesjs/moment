@@ -13,7 +13,7 @@ export default class Minute extends Hour {
     if (!matches) {
       throw new Error(
         'The provided argument must be valid minute string ' +
-        'and not ' + isoString
+        `and not ${isoString}`
       )
     }
 
@@ -23,7 +23,7 @@ export default class Minute extends Hour {
 
     assert(
       0 <= minute && minute < 60, // eslint-disable-line yoda
-      'Minute must be in range [0,60[ and not ' + minute
+      `Minute must be in range [0,60[ and not ${minute}`
     )
     this._minute = minute
   }
@@ -54,7 +54,7 @@ export default class Minute extends Hour {
   get string () {
     if (!this._isoString) {
       this._isoString = super.string
-        .replace('Z', ':' + this.minuteString + 'Z')
+        .replace('Z', `:${this.minuteString}Z`)
     }
 
     return this._isoString

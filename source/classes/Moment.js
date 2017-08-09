@@ -7,7 +7,7 @@ import precisionToDuration from '../precisionToDuration'
 
 
 export default class Moment {
-  /* eslint-disable brace-style*/
+  /* eslint-disable brace-style */
   startOfYear ()   { startOf.year(this); return this }
   startOfMonth ()  { startOf.month(this); return this }
   startOfWeek ()   { startOf.week(this); return this }
@@ -82,9 +82,7 @@ export default class Moment {
   /* eslint-enable brace-style */
 
   get intervalString () {
-    return this.lowerLimit.toISOString() +
-      '--' +
-      this.upperLimit.toISOString()
+    return `${this.lowerLimit.toISOString()}--${this.upperLimit.toISOString()}`
   }
 
   get duration () {

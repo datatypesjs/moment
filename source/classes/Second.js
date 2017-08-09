@@ -13,7 +13,7 @@ export default class Second extends Minute {
     if (!matches) {
       throw new Error(
         'The provided argument must be valid ISO string for a second ' +
-        'and not ' + isoString
+        `and not ${isoString}`
       )
     }
 
@@ -23,7 +23,7 @@ export default class Second extends Minute {
 
     assert(
       0 <= second && second < 60, // eslint-disable-line yoda
-      'Second must be in range [0,60[ and not ' + second
+      `Second must be in range [0,60[ and not ${second}`
     )
     this._second = second
   }
@@ -54,7 +54,7 @@ export default class Second extends Minute {
   get string () {
     if (!this._isoString) {
       this._isoString = super.string
-          .replace('Z', ':' + this.secondString + 'Z')
+        .replace('Z', `:${this.secondString}Z`)
     }
 
     return this._isoString

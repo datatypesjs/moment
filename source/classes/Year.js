@@ -11,7 +11,7 @@ export default class Year extends Moment {
     year = Number(year)
     assert(
       0 <= year && year <= 9999, // eslint-disable-line yoda
-      'Year must be in range [0,9999] and not ' + year
+      `Year must be in range [0,9999] and not ${year}`
     )
     this._year = year
   }

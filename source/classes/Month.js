@@ -7,7 +7,11 @@ import Year from './Year.js'
 
 export default class Month extends Year {
   constructor (isoString) {
-    assert(/-(0[1-9]|1[0-2])$/.test(isoString))
+    const regex = /-(0[1-9]|1[0-2])$/
+    assert(
+      regex.test(isoString),
+      `${isoString} does not match ${regex}`
+    )
 
     const fragments = isoString.split('-')
     const month = Number(fragments[1])
@@ -16,7 +20,7 @@ export default class Month extends Year {
 
     assert(
       1 <= month && month <= 12, // eslint-disable-line yoda
-      'Month must be in range [1,12] and not ' + month
+      `Month must be in range [1,12] and not ${month}`
     )
     this._month = month
   }
@@ -46,7 +50,7 @@ export default class Month extends Year {
 
   get string () {
     if (!this._isoString) {
-      this._isoString = super.string + '-' + this.monthString
+      this._isoString = `${super.string}-${this.monthString}`
     }
     return this._isoString
   }

@@ -2,7 +2,7 @@ import zpad from 'zpad'
 
 export default class Time {
   constructor (timeString) {
-    timeString = timeString.replace(/\:/g, '')
+    timeString = timeString.replace(/:/g, '')
 
     const [time] = timeString.split('.')
     let [, fraction = 0] = timeString.split('.')
@@ -12,7 +12,7 @@ export default class Time {
     this._seconds = 0
     this._milliseconds = 0
 
-    fraction = Number('0.' + fraction)
+    fraction = Number(`0.${fraction}`)
 
     if (time.length >= 2) {
       this._hours = Number(time.slice(0, 2)) || 0
@@ -31,12 +31,12 @@ export default class Time {
     this.getString()
 
     this.precision = this._milliseconds
-    ? 'millisecond'
-    : this._seconds
-      ? 'second'
-      : this._minutes
-        ? 'minute'
-        : 'hour'
+      ? 'millisecond'
+      : this._seconds
+        ? 'second'
+        : this._minutes
+          ? 'minute'
+          : 'hour'
   }
 
   // Hours
@@ -105,10 +105,8 @@ export default class Time {
   get string () {
     if (!this._timeString) {
       this._timeString =
-        zpad(this._hours, 2) + ':' +
-        zpad(this._minutes, 2) + ':' +
-        zpad(this._seconds, 2) + '.' +
-        zpad(this._milliseconds, 3)
+        `${zpad(this._hours, 2)}:${zpad(this._minutes, 2)}:` +
+        `${zpad(this._seconds, 2)}.${zpad(this._milliseconds, 3)}`
     }
     return this._timeString
   }
